@@ -6,7 +6,7 @@
 
 jest.mock('../repositories/users.repository');
 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import * as usersRepo from '../repositories/users.repository';
 import * as authService from '../services/auth.service';
 import { AppError } from '../errors/AppError';

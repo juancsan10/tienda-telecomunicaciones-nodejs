@@ -23,8 +23,14 @@ const validProduct = {
 };
 
 beforeAll(async () => {
-  mongod = await MongoMemoryServer.create();
-  await mongoose.connect(mongod.getUri());
+  mongod = await MongoMemoryServer.create({
+    binary: {
+      version: '7.0.14',
+    },
+  });
+  await mongoose.connect(mongod.getUri(), {
+    serverSelectionTimeoutMS: 30000,
+  });
 
   // Usuario normal
   await request(app)
@@ -47,7 +53,7 @@ beforeAll(async () => {
     .post('/api/v1/auth/login')
     .send({ email: 'admin@test.com', password: 'Password1!' });
   adminToken = adminLogin.body.accessToken as string;
-});
+}, 180000);
 
 afterEach(async () => {
   // Limpiar solo la colección de productos entre tests, mantener usuarios de auth

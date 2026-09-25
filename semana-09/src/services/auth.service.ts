@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { AppError } from '../errors/AppError.js';
 import type { LoginDto, RegisterDto } from '../types/index.js';
 import * as usersRepo from '../repositories/users.repository.js';
