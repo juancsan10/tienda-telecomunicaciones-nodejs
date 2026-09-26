@@ -7,6 +7,9 @@
     "node": ">=22.0.0"
   },
   "packageManager": "pnpm@10.34.5",
+  "pnpm": {
+    "onlyBuiltDependencies": ["bcrypt"]
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
